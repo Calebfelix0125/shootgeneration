@@ -1,0 +1,65 @@
+body {
+    background-color: black;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nav-link{
+    color: white;
+}
+
+.nav-link:hover {
+    color: plum;
+    transform: scale(1.15);
+    transition: 0.5s;
+}
+
+#dong {
+    width: 10.3rem;
+    height: 15rem;
+    margin: 1%;
+    border-radius: 15px;
+    border-style: none;
+    background-image: linear-gradient(black, #9f58ed 80%);
+}
+
+
+#todolist {
+    color: white;
+    font-weight: bold;
+    font-size: xx-large;
+    font-style: italic;
+}
+ 
+#votw {
+    font-weight: bold;
+    font-size: xx-large;
+    font-style: italic;
+}
+
+#curhatdong, #kanadong, #daftardong{
+    font-weight: bold;
+    font-size: x-large;
+}
+
+#daftardong, #kanadong, #curhatdong{
+    color: white;
+}
+
+#daftardongsub {
+    visibility: hidden;
+    color: silver;
+}
+
+#curhatdongsub {
+    visibility: hidden;
+    color: silver;
+}
+
+#kanadongsub {
+    visibility: hidden;
+    color: silver;
+}
+
+.card:hover #daftardongsub,#curhatdongsub,#kanadongsub{
+    visibility:visible;
+}
