@@ -1,0 +1,30 @@
+body {
+    background-color: #9f58ed;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#login {
+    border-radius: 30px;
+    font-weight: bold;
+    background-color: #3a05a4;
+    color: white;
+    border-color: transparent;
+}
+
+#login:hover {
+    background-color: white;
+    color: #3a05a4;
+}
+
+#signup:hover {
+    color: silver;
+    text-decoration:underline;
+}
+
+.form-control::after{
+    box-shadow: none;
+}
+
+.form-control:hover {
+    box-shadow: none;
+}
