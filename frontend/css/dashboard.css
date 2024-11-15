@@ -29,6 +29,22 @@ body {
     font-size: xx-large;
     font-style: italic;
 }
+
+#inputtodolist{
+    border-radius: 30px;
+}
+
+#submittodolist{
+    background-color: #3a05a4;
+    border-radius: 30px;
+    color: white;
+    font-weight: bold;
+}
+
+#submittodolist:hover {
+    background-color: white;
+    color: #3a05a4;
+}
  
 #votw {
     font-weight: bold;
@@ -45,21 +61,35 @@ body {
     color: white;
 }
 
-#daftardongsub {
+#daftardongsub, #curhatdongsub, #kanadongsub {
     visibility: hidden;
     color: silver;
 }
 
-#curhatdongsub {
-    visibility: hidden;
-    color: silver;
-}
-
-#kanadongsub {
-    visibility: hidden;
-    color: silver;
-}
-
-.card:hover #daftardongsub,#curhatdongsub,#kanadongsub{
+.card:hover #daftardongsub{
     visibility:visible;
+}
+
+.card:hover #curhatdongsub{
+    visibility: visible;
+}
+
+.card:hover #kanadongsub {
+    visibility: visible;
+}
+
+#lists {
+    padding: 0;
+    background-color: transparent;
+    font-weight: bold;
+    color: skyblue;
+    border-color: transparent;
+    font-size: 21;
+}
+
+#display-ayat{
+    font-weight: bold;
+    font-size: x-large;
+    margin: 1vw;
+    color: #3a05a4;
 }
