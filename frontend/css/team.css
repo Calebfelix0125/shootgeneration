@@ -1,0 +1,225 @@
+body {
+    background-color: black;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nav-link {
+    color: white;
+}
+
+.nav-link:hover {
+    color: plum;
+    transform: scale(1.15);
+    transition: 0.5s;
+}
+
+body {
+    background-color: black;
+    background-repeat: no-repeat;
+    font-family: "Montserrat", sans-serif;
+    color: white;
+    /* overflow-x:hidden;
+   overflow-y:hidden; */
+}
+
+#navbar {
+    display: flex;
+    justify-content: center;
+    margin: 0.5vw;
+    background-color: transparent;
+}
+
+#check {
+    display: none;
+}
+
+.navbar-menu {
+    color: white;
+    text-decoration: none;
+    margin: 4vh;
+    text-align: center;
+}
+
+.navbar-menu:hover {
+    color: #b194d7;
+}
+
+.navbar-menu.selected {
+    color: #b194d7;
+}
+
+
+.tab-content {
+    background-color: transparent;
+    border-top: none;
+}
+
+/* Revamped Search Bar */
+.search-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    /* background-color: #1a1a1a; */
+    border-radius: 15px;
+    margin: auto;
+    width: 80%;
+}
+
+.search-bar input[type="text"] {
+    width: 80%;
+    padding: 12px;
+    border: none;
+    border-radius: 15px;
+    outline: none;
+    margin-right: 10px;
+    background-color: #333;
+    color: white;
+    font-size: 16px;
+}
+
+/* Team Cards */
+.team-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 20px;
+    background-color: #000;
+    overflow: hidden;
+    width: 100%;
+}
+
+.team-card {
+    background-image: linear-gradient(black, #9f58ed 80%);
+    margin: 10px;
+    width: 300px;
+    text-align: center;
+    color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.team-card:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.8);
+}
+
+.team-card h2 {
+    font-size: 20px;
+    margin: 0;
+    color: #fff;
+    text-align: right;
+    margin-right: 20px;
+    margin-top: 40px;
+}
+
+.team-card h1 {
+    font-size: 26px;
+    margin: 10px 0;
+    color: #fff;
+    text-align: right;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
+.team-card .team-image {
+    /* background-color: gray; */
+    /* background-image: linear-gradient(black, #9f58ed 80%); */
+    width: 33.3%;
+    height: 250px;
+    padding: 0;
+    border-radius: 15px;
+}
+
+/* Carousel Arrow */
+.carousel-arrow {
+    color: white;
+    font-size: 60px;
+    cursor: pointer;
+    position: absolute;
+    top: 55%;
+    transform: translateY(-50%);
+    user-select: none;
+    z-index: 10;
+}
+
+.carousel-arrow.left {
+    left: 10px;
+}
+
+.carousel-arrow.right {
+    right: 10px;
+}
+
+.carousel-arrow:hover {
+    color: #a64bf4;
+}
+
+@media only screen and (max-width: 768px) {
+    #navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: 80%;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        z-index: 100;
+        background-color: var(--color2);
+        transition: all 0.2s ease-in-out;
+        background-color: black;
+    }
+
+    #navbar li {
+        margin-top: 40px;
+    }
+
+    #navbar li a {
+        padding: 10px;
+    }
+
+    .open-menu,
+    .close-menu {
+        display: block;
+    }
+
+    #check:checked~#navbar {
+        right: 0;
+        /* Show the navbar when checked */
+    }
+
+    .search-bar {
+        margin-top: 100px;
+        width: 90%;
+        /* Lebar penuh untuk mobile */
+    }
+
+    .team-container {
+        flex-direction: column;
+        /* Susun kartu di dalam kolom */
+        width: 90%;
+        /* Lebar kontainer penuh pada mobile */
+    }
+
+    .team-card {
+        width: 100%;
+        /* Lebar penuh untuk kartu */
+    }
+
+    .team-card h2 {
+        margin-right: 20px;
+        margin-top: 20px;
+        font-size: 18px;
+    }
+
+    .team-card h1 {
+        margin-right: 20px;
+        margin-top: 10px;
+        font-size: 22px;
+    }
+}

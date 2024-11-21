@@ -1,0 +1,14 @@
+body {
+    background-color: black;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nav-link {
+    color: white;
+}
+
+.nav-link:hover {
+    color: plum;
+    transform: scale(1.15);
+    transition: 0.5s;
+}

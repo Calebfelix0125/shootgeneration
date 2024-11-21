@@ -1,0 +1,210 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>We Are SHOOTGEN</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body ng-app="adminApp" ng-controller="AdminController">
+    <div class="container-fluid">
+
+        <div class="d-flex justify-content-center" style="padding: 1.5rem;">
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link active" style="color: #b194d7;" aria-current="page" href="#">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="news.html">NEWS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">ABOUT US</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">TEAM</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">PROFILE</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="d-flex justify-content-center" style="margin: 1%;">
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel"
+                style="width: 40%; height: 50%; margin: 1%;">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{$index}}"
+                        ng-repeat="image in carouselImages" ng-class="{'active': $index === 0}"
+                        aria-label="Slide {{$index + 1}}">
+                    </button>
+                </div>
+                <div class="carousel-inner" style="border-radius: 15px;">
+                    <div class="carousel-item" ng-repeat="image in carouselImages" ng-class="{'active': $index === 0}">
+                        <img ng-src="{{image}}" class="d-block w-100" alt="Slide {{$index + 1}}">
+                        <!-- Ensure delete button works -->
+                        <button class="btn btn-danger btn-sm position-absolute top-0 end-0 m-2" ng-click="deleteImage($index)">
+                            Hapus
+                        </button>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="d-flex justify-content-center my-3">
+            <form class="d-flex align-items-end mx-2" ng-submit="addImage()">
+                <label for="inputImage" class="visually-hidden">Tambah Gambar</label>
+                <input type="text" class="form-control mx-1" id="inputImage" ng-model="newImage"
+                    placeholder="Masukkan URL gambar..." required>
+                <button type="submit" class="btn btn-primary">Tambah</button>
+            </form>
+        </div>
+
+
+        <div class="d-flex justify-content-center">
+            <div id="dong" class="card">
+                <a href="news.html" style="text-decoration: none;">
+                    <div class="card-body">
+                        <h5 id="curhatdong" class="card-title">CURHAT DONG</h5>
+                        <h6 id="curhatdongsub" class="card-subtitle mb-2">Kalau hidup kalian lagi capek-capeknya bisa
+                            banget cerita disini</h6>
+                    </div>
+                </a>
+            </div>
+            <div id="dong" class="card">
+                <a href="" style="text-decoration: none;">
+                    <div class="card-body">
+                        <h5 id="kanadong" class="card-title">KANA DONG</h5>
+                        <h6 id="kanadongsub" class="card-subtitle mb-2">Having fun dan bertumbuh bareng teman dalam
+                            Komunitas Anak Allah</h6>
+                    </div>
+                </a>
+            </div>
+            <div id="dong" class="card">
+                <a href="" style="text-decoration: none;">
+                    <div class="card-body">
+                        <h5 id="daftardong" class="card-title">DAFTAR DONG</h5>
+                        <h6 id="daftardongsub" class="card-subtitle mb-2">Daftarin diri kalian di event-event Shoot
+                            terdekat!</h6>
+                    </div>
+                </a>
+            </div>
+            <div class="d-flex justify-content-center">
+                <div class="card" style="width: 37rem; margin: 1%; border-radius: 15px;">
+                    <div class="card-body">
+                        <h5 id="votw" class="card-title">VERSE OF THE WEEK</h5>
+                        <p ng-if="!userContent" class="text-muted">Belum ada ayat yang ditampilkan</p>
+                        <p ng-if="userContent" class="card-text">{{userContent}}</p>
+                        <form class="d-flex align-items-end mx-2" ng-submit="uploadIsiAyat()">
+                            <label for="inputisi" class="visually-hidden">Input Ayat</label>
+                            <input type="text" class="form-control mx-1" id="inputisi" ng-model="newContent"
+                                placeholder="Masukkan ayat baru..." required>
+                            <button type="submit" class="btn" id="submittodolist">Submit</button>
+                        </form>
+                    </div>
+                
+                    <!-- Ayat Input Form (always visible) -->
+                    <div class="card-body">
+                        <h5 id="display-ayat" class="card-title">{{ayat || "Belum ada ayat yang ditampilkan"}}</h5>
+                        <form class="d-flex align-items-end mx-2" ng-submit="uploadAyat()">
+                            <label for="inputayat" class="visually-hidden">Input Ayat</label>
+                            <input type="text" class="form-control mx-1" id="inputayat" ng-model="newAyat"
+                                placeholder="Masukkan ayat..." required>
+                            <button type="submit" class="btn" id="submittodolist">Submit</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+            
+            <script>
+                angular.module('adminApp', [])
+                    .controller('AdminController', function ($scope) {
+                        // Initialize Verse of the Week variables
+                        $scope.userContent = localStorage.getItem('inputisi') || "";
+                        $scope.newContent = "";
+                        $scope.ayat = localStorage.getItem('inputayat') || "";
+                        $scope.newAyat = "";
+
+                        // Function to upload and save the new content for Verse of the Week
+                        $scope.uploadIsiAyat = function () {
+                            if ($scope.newContent && $scope.newContent.trim()) {
+                                localStorage.setItem('inputisi', $scope.newContent);
+                                $scope.userContent = $scope.newContent;
+                                $scope.newContent = "";
+                                alert('Tulisan berhasil diunggah!');
+                            } else {
+                                alert('Tulisan tidak boleh kosong!');
+                            }
+                        };
+
+                        // Function to upload and save the new verse (ayat)
+                        $scope.uploadAyat = function () {
+                            if ($scope.newAyat && $scope.newAyat.trim()) {
+                                localStorage.setItem('inputayat', $scope.newAyat);
+                                $scope.ayat = $scope.newAyat;
+                                $scope.newAyat = "";
+                                alert('Ayat berhasil diunggah!');
+                            } else {
+                                alert('Ayat tidak boleh kosong!');
+                            }
+                        };
+
+                        // Initialize carousel images from localStorage
+                        $scope.carouselImages = JSON.parse(localStorage.getItem('carouselImages')) || [
+                            'img/news1.png',
+                            'img/news2.png',
+                            'img/news3.png'
+                        ];
+                        $scope.newImage = "";
+
+                        // Function to add an image
+                        $scope.addImage = function () {
+                            if ($scope.newImage && $scope.newImage.trim()) {
+                                $scope.carouselImages.push($scope.newImage);
+                                localStorage.setItem('carouselImages', JSON.stringify($scope.carouselImages));
+                                $scope.newImage = "";
+                                alert('Gambar berhasil ditambahkan!');
+                            } else {
+                                alert('URL gambar tidak boleh kosong!');
+                            }
+                        };
+
+                        // Function to delete an image
+                        $scope.deleteImage = function (index) {
+                            $scope.carouselImages.splice(index, 1); // Hapus gambar dari array
+                            localStorage.setItem('carouselImages', JSON.stringify($scope.carouselImages)); // Simpan ke localStorage
+
+                            // Jika gambar yang aktif dihapus, pastikan gambar berikutnya aktif
+                            if ($scope.carouselImages.length > 0) {
+                                document.querySelector('.carousel-item').classList.add('active');
+                            }
+                            alert('Gambar berhasil dihapus!');
+                        };
+                    });
+            </script>
+
+</body>
+
+</html>

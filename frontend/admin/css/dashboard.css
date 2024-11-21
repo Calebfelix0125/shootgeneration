@@ -3,7 +3,7 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
-.nav-link{
+.nav-link {
     color: white;
 }
 
@@ -14,9 +14,9 @@ body {
 }
 
 #dong {
-    width: 10.6rem;
-    height: 16rem;
-    margin: 1.1%;
+    width: 10.3rem;
+    height: 15rem;
+    margin: 1%;
     border-radius: 15px;
     border-style: none;
     background-image: linear-gradient(black, #9f58ed 80%);
@@ -30,31 +30,11 @@ body {
     font-style: italic;
 }
 
-/* Tambahkan gaya saat elemen fokus (pengguna sedang mengedit) */
-[contenteditable="true"]:focus {
-    border: 1px solid #5e17eb;
-    /* Ganti warna border saat fokus */
-    box-shadow: 0 0 5px rgba(94, 23, 235, 0.5);
-    /* Tambahkan efek bayangan */
-    background-color: #fff;
-    /* Ubah warna latar belakang */
-    border-radius: 30px;
-    padding: 0.5rem;
-}
-
-/* Batasi text selection styling */
-[contenteditable="true"]::selection {
-    background: #5e17eb;
-    /* Warna latar belakang teks yang dipilih */
-    color: white;
-    /* Warna teks yang dipilih */
-}
-
-#inputtodolist{
+#inputayat, #inputisi {
     border-radius: 30px;
 }
 
-#submittodolist{
+#submittodolist {
     background-color: #3a05a4;
     border-radius: 30px;
     color: white;
@@ -65,32 +45,38 @@ body {
     background-color: white;
     color: #3a05a4;
 }
- 
+
 #votw {
     font-weight: bold;
     font-size: xx-large;
     font-style: italic;
 }
 
-#curhatdong, #kanadong, #daftardong{
+#curhatdong,
+#kanadong,
+#daftardong {
     font-weight: bold;
     font-size: x-large;
 }
 
-#daftardong, #kanadong, #curhatdong{
+#daftardong,
+#kanadong,
+#curhatdong {
     color: white;
 }
 
-#daftardongsub, #curhatdongsub, #kanadongsub {
+#daftardongsub,
+#curhatdongsub,
+#kanadongsub {
     visibility: hidden;
     color: silver;
 }
 
-.card:hover #daftardongsub{
-    visibility:visible;
+.card:hover #daftardongsub {
+    visibility: visible;
 }
 
-.card:hover #curhatdongsub{
+.card:hover #curhatdongsub {
     visibility: visible;
 }
 
@@ -107,7 +93,7 @@ body {
     font-size: 21;
 }
 
-#display-ayat{
+#display-ayat {
     font-weight: bold;
     font-size: x-large;
     margin: 1vw;
