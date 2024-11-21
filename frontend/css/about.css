@@ -1,0 +1,63 @@
+body {
+    background-color: black;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nav-link {
+    color: white;
+}
+
+.nav-link:hover {
+    color: plum;
+    transform: scale(1.15);
+    transition: 0.5s;
+}
+
+.visi {
+    flex: 1;
+    /* Agar "VISI" dan "MISI" memiliki lebar yang sama */
+    background-color: #7200ff;
+    /* Warna kotak belakang */
+    padding: 20px;
+    border-radius: 10px;
+    color: black;
+    text-align: center;
+}
+
+.misi {
+    flex: 1;
+    /* Agar "VISI" dan "MISI" memiliki lebar yang sama */
+    background-color: #b300ff;
+    /* Warna kotak belakang */
+    padding: 20px;
+    border-radius: 10px;
+    color: black;
+    text-align: center;
+}
+
+.about-us-nilai {
+    background-color: white;
+    /* Warna kotak belakang untuk NILAI */
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.about-us-visi-misi {
+    display: flex;
+    gap: 20px;
+    /* Jarak antara box "VISI" dan "MISI" */
+    width: 100%;
+    flex-direction: row;
+    /* Bersebelahan pada tampilan desktop */
+}
+
+
+@media only screen and (max-width: 768px) {
+    .about-us-visi-misi {
+        flex-direction: column;
+        /* Berubah menjadi atas-bawah di tampilan mobile */
+        gap: 20px;
+    }
+}

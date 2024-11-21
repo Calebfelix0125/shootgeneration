@@ -23,15 +23,15 @@
                 <li class="nav-item">
                     <a class="nav-link active" style="color: #b194d7;" aria-current="page" href="#">HOME</a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="news.html">NEWS</a>
-                </li>
+                </li> -->
                 <li class="nav-item">
-                    <a class="nav-link" href="#">ABOUT US</a>
+                    <a class="nav-link" href="about.html">ABOUT US</a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="#">TEAM</a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a class="nav-link" href="#">PROFILE</a>
                 </li>
@@ -70,27 +70,36 @@
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
-            <div class="card w-60" style="width: 37rem; margin: 1%; border-radius: 15px; background-color: #5e17eb;">
+            <div class="card w-60" style="width: 36rem; margin: 1%; border-radius: 15px; background-color: #5e17eb;">
                 <div class="card-body">
                     <h5 id="todolist" class="card-title">TO DO LIST</h5>
-                    <p class="card-text" style="color: white;">Buat diri kalian produktif dengan membuat to do list!</p>
+                    <p class="card-text" style="color: white;">Buat diri kalian produktif dengan membuat to do list! Klik list untuk mengedit dan klik area diluar list untuk menyimpan perubahan</p>
                     <div class="d-flex">
                         <ul class="list-group" ng-repeat="column in todoColumns">
-                            <li id="lists" class="list-group-item" ng-repeat="item in column track by $index">{{ item }} 
-                                <button class="btn btn-sm muted-text" style="color: red; font-style: italic;" ng-click="deleteTodo($parent.$index, $index)">x</button></li>
+                            <li id="lists" class="list-group-item" ng-repeat="item in column track by $index">
+                                <span contenteditable="true" ng-model="todoColumns[$parent.$index][$index]" 
+                                    ng-blur="updateTodo($parent.$index, $index, $event.target.innerText)"
+                                    style="display: inline-block; min-width: 100px;">
+                                    {{ item }}
+                                </span>
+                                <button class="btn btn-sm muted-text" style="color: red; font-style: italic;"
+                                    ng-click="deleteTodo($parent.$index, $index)">x</button>
+                            </li>
                         </ul>
                     </div>
                 </div>
                 <form class="d-flex align-items-end mx-2" ng-submit="addTodo()">
-                        <label for="inputtodolist" class="visually-hidden">Password</label>
-                        <input type="text" class="form-control mx-1" id="inputtodolist" ng-model="newTodo" placeholder="misal: bikin tugas" required>
-                        <button type="submit" class="btn" id="submittodolist">Submit</button>
+                    <label for="inputtodolist" class="visually-hidden">Password</label>
+                    <input type="text" class="form-control mx-1" id="inputtodolist" ng-model="newTodo"
+                        placeholder="misal: bikin tugas" required>
+                    <button type="submit" class="btn" id="submittodolist">Submit</button>
                 </form>
             </div>
+
         </div>
 
         <script>
-            angular.module('todoApp', [])
+           angular.module('todoApp', [])
                 .controller('TodoController', ['$scope', function ($scope) {
                     // Define the columns of tasks
                     $scope.todoColumns = [
@@ -101,7 +110,7 @@
 
                     // Add a new task to the columns with a max of 9 tasks in total and max 25 characters per task
                     $scope.addTodo = function () {
-                        const maxTasks = 9;
+                        const maxTasks = 6;
                         const maxTaskLength = 15;
                         const tasksCount = $scope.todoColumns.flat().length;
 
@@ -120,17 +129,30 @@
                         } else if (tasksCount >= maxTasks) {
                             alert("Maximum of 9 tasks reached!");
                         }
+                    };
 
-                        $scope.deleteTodo = function (columnIndex, taskIndex) {
-                            $scope.todoColumns[columnIndex].splice(taskIndex, 1);
-                        };
+                    // Delete a specific task
+                    $scope.deleteTodo = function (columnIndex, taskIndex) {
+                        $scope.todoColumns[columnIndex].splice(taskIndex, 1);
+                    };
+
+                    // Update a task when edited
+                    $scope.updateTodo = function (columnIndex, taskIndex, newValue) {
+                        const maxTaskLength = 15;
+
+                        if (newValue.length > maxTaskLength) {
+                            alert("Task cannot exceed 15 characters!");
+                        } else {
+                            $scope.todoColumns[columnIndex][taskIndex] = newValue;
+                        }
                     };
                 }]);
+
         </script>
 
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center" style="margin: 1%;">
             <div id="dong" class="card">
-                <a href="" style="text-decoration: none;">
+                <a href="news.html" style="text-decoration: none;">
                     <div class="card-body">
                         <h5 id="curhatdong" class="card-title">CURHAT DONG</h5>
                         <h6 id="curhatdongsub" class="card-subtitle mb-2">Kalau hidup kalian lagi capek-capeknya bisa banget cerita disini</h6>
@@ -138,7 +160,7 @@
                 </a>
             </div>
             <div id="dong" class="card">
-                <a href="" style="text-decoration: none;">
+                <a href="kana-dong.html" style="text-decoration: none;">
                     <div class="card-body">
                         <h5 id="kanadong" class="card-title">KANA DONG</h5>
                         <h6 id="kanadongsub" class="card-subtitle mb-2">Having fun dan bertumbuh bareng teman dalam Komunitas Anak Allah</h6>
@@ -153,16 +175,53 @@
                     </div>
                 </a>
             </div>
-            <div class="card" style="width: 37rem; margin: 1%; border-radius: 15px;">
-                <div class="card-body">
-                    <h5 id="votw" class="card-title">VERSE OF THE WEEK</h5>
-                    <p class="card-text">Oleh karena engkau berharga di mata-Ku dan mulia, dan Aku ini mengasihi engkau, maka Aku memberikan manusia sebagai
-                    gantimu, dan bangsa-bangsa sebagai ganti nyawamu.</p>
+            <div class="d-flex justify-content-center">
+                <div class="card" style="width: 36rem; margin: 1%; border-radius: 15px;">
+                    <div class="card-body">
+                        <h5 id="votw" class="card-title">VERSE OF THE WEEK</h5>
+                        <h5 class="card-text">{{ verseContent || "No verse available yet!" }}</h5>
+                    </div>
+                    <h5 id="display-ayat" class="card-title">{{ verseAyat || "" }}</h5>
                 </div>
-                <h5 id="display-ayat" class="card-title">Yesaya 43:4 (TB)</h5>
             </div>
         </div>
     </div>
     
+    <script>
+        angular.module('todoApp', [])
+            .controller('TodoController', ['$scope', function ($scope) {
+                // To Do List Logic
+                $scope.todoColumns = [[], [], []];
+
+                $scope.addTodo = function () {
+                    const maxTasks = 9;
+                    const maxTaskLength = 15;
+                    const tasksCount = $scope.todoColumns.flat().length;
+
+                    if ($scope.newTodo && $scope.newTodo.length > maxTaskLength) {
+                        alert("Task cannot exceed 15 characters!");
+                    } else if ($scope.newTodo && tasksCount < maxTasks) {
+                        for (let i = 0; i < $scope.todoColumns.length; i++) {
+                            if ($scope.todoColumns[i].length < 3) {
+                                $scope.todoColumns[i].push($scope.newTodo);
+                                $scope.newTodo = '';
+                                alert("Berhasil ditambahkan");
+                                break;
+                            }
+                        }
+                    } else if (tasksCount >= maxTasks) {
+                        alert("Maximum of 9 tasks reached!");
+                    }
+                };
+
+                $scope.deleteTodo = function (columnIndex, taskIndex) {
+                    $scope.todoColumns[columnIndex].splice(taskIndex, 1);
+                };
+
+                // Verse of the Week Logic
+                $scope.verseContent = localStorage.getItem('inputisi') || "No content available!";
+                $scope.verseAyat = localStorage.getItem('inputayat') || "";
+            }]);
+    </script>
 </body>
 </html>
